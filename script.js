@@ -29,7 +29,13 @@ $(document).ready(function () {
     $(document).on('click', '.edit-btn', function () {
         var listItem = $(this).closest('.task-item');
         var index = listItem.data('index');
-        var updatedTask = listItem.find('.task-text').text();
+        listItem.find('.task-text').focus();
+    });
+
+    $(document).on('focusout', '.task-text', function () {
+        var listItem = $(this).closest('.task-item');
+        var index = listItem.data('index');
+        var updatedTask = $(this).text();
         tasks[index] = updatedTask;
         renderTasks();
     });
